@@ -143,7 +143,7 @@ def main():
         
         # Optional configuration hints
         with st.expander("ℹ️ Optional Settings"):
-            st.info("The app is configured with:\n- Model: openai/gpt-4o\n- Referer: GitHub project\n- Title: PDF Q&A Tool")
+            st.info("The app is configured with:\n- Model: llama-3.3-8b-instruct\n- Referer: GitHub project\n- Title: PDF Q&A Tool")
     
     # Initialize LLM and SentenceTransformers embeddings
     try:

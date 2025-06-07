@@ -6,3 +6,4 @@ requests
 numpy
 tiktoken
 sentence-transformers
+langchain-community

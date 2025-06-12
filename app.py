@@ -15,6 +15,9 @@ from langchain.schema import Generation, LLMResult
 from langchain.callbacks.manager import CallbackManagerForLLMRun
 import time
 from pydantic import Field
+from dotenv import load_dotenv  # Add this import
+
+load_dotenv()  # Load environment variables from .env
 
 # Custom OpenRouter LLM Class
 class OpenRouterLLM(LLM):
@@ -127,19 +130,13 @@ def main():
     # Sidebar for API configuration
     with st.sidebar:
         st.header("🔧 Configuration")
-        openrouter_api_key = st.text_input(
-            "OpenRouter API Key",
-            type="password",
-            value=os.getenv("OPENROUTER_API_KEY", ""),
-            help="Enter your OpenRouter API key or set OPENROUTER_API_KEY environment variable"
-        )
+        openrouter_api_key = os.getenv("OPENROUTER_API_KEY", "")
         
         if not openrouter_api_key:
-            st.warning("⚠️ Please enter your OpenRouter API key to continue")
-            st.markdown("You can get your API key from [OpenRouter](https://openrouter.ai/)")
+            st.warning("⚠️ OpenRouter API key not found in backend. Please set it in the .env file.")
             return
         
-        st.success("✅ API key configured")
+        st.success("✅ API key configured in backend")
         
         # Optional configuration hints
         with st.expander("ℹ️ Optional Settings"):
